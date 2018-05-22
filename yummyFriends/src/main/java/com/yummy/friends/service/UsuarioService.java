@@ -13,9 +13,21 @@ import com.yummy.friends.repository.UsuarioRepository;
 public class UsuarioService {
 	@Autowired
 	public UsuarioRepository usuarioRepository;
-	
+
 	public void crearUsuario(Usuario u) {
 		this.usuarioRepository.save(u);
+	}
+
+	public void login(String pass, String email) {
+
+	}
+
+	public List<Usuario> getUsuarios() {
+		return this.usuarioRepository.findAll();
+	}
+
+	public String recuperPass(String email) {
+		return this.usuarioRepository.recuperarPass(email);
 	}
 
 }

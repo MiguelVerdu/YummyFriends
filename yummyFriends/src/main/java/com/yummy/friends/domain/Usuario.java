@@ -26,7 +26,7 @@ public class Usuario {
 	
 	public String password;
 	
-	public boolean tipoPerfil;
+	public Integer tipoPerfil;
 	
 	public String fotoPerfil;
 	

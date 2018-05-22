@@ -13,5 +13,10 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Integer>{
 	@Query("select c from Ciudad c")
 	public List<Ciudad> getCiudades();
 
+	@Query("select case count(*) when 1 then 'ok' end " + 
+			"from Usuario u " + 
+			"where u.mail = ?1")
+	public String recuperarPass(String email);
+
 	
 }
