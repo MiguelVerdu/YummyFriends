@@ -3,6 +3,7 @@ package com.yummy.friends.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,6 +14,7 @@ import com.yummy.friends.domain.Usuario;
 import com.yummy.friends.service.UsuarioService;
 
 @RestController
+@CrossOrigin("*")
 public class UsuarioController {
 
 	@Autowired
@@ -28,7 +30,7 @@ public class UsuarioController {
 		this.usuarioService.login(u.getPassword(), u.getMail());
 	}
 	
-	@PostMapping("/getUsuarios")
+	@GetMapping("/getUsuarios")
 	public List<Usuario> getUsuarios(){
 		return this.usuarioService.getUsuarios();
 	}
