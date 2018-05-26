@@ -18,4 +18,8 @@ public class CiudadService {
 	public List<Ciudad> getCiudades(){
 		return this.ciudadRepository.findAll();
 	}
+
+	public Integer codPostal(Integer idCiudad) {
+		return this.ciudadRepository.codPostal(idCiudad);
+	}
 }

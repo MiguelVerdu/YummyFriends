@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.yummy.friends.domain.Ciudad;
@@ -19,5 +20,10 @@ public class CiudadController {
 	@GetMapping("/getCiudades")
 	public List<Ciudad> getCiudades(){
 		return this.ciudadService.getCiudades();
+	}
+	
+	@GetMapping("/codPostal/{idCiudad}")
+	public Integer codPostal(@PathVariable Integer idCiudad) {
+		return this.ciudadService.codPostal(idCiudad);
 	}
 }
