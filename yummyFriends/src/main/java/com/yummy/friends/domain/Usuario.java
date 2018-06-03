@@ -3,6 +3,7 @@ package com.yummy.friends.domain;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 import lombok.Getter;
@@ -26,7 +27,7 @@ public class Usuario {
 	
 	public String password;
 	
-	public Integer tipoPerfil;
+	public String tipoPerfil;
 	
 	public String fotoPerfil;
 	

@@ -28,7 +28,7 @@ public class Venta {
 
 	public String descripcion;
 
-	public String valoracion;
+	public Float valoracion;
 	public Integer cantidad;
 
 	public Float precio;

@@ -29,4 +29,25 @@ public class UsuarioService {
 		return this.usuarioRepository.recuperarPass(email);
 	}
 
+	public String validarUsuario(String email) {
+		return this.usuarioRepository.validarUsuario(email);
+	}
+
+	public Usuario getUsuario(Integer idUsuario) {
+		return this.usuarioRepository.findByidUsuario(idUsuario);
+	}
+
+	public Float obtVal(Integer idUsuario) {
+		return this.usuarioRepository.obtVal(idUsuario);
+	}
+
+	public Usuario actualizarUsuario(Usuario u) {
+//		return this.usuarioRepository.actualizarUsuario(u);
+		return this.usuarioRepository.save(u);
+	}
+	
+	public Boolean exists(Usuario u) {
+		return this.usuarioRepository.existsById(u.getIdUsuario());
+	}
+
 }

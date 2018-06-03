@@ -17,7 +17,7 @@ public class VentaController {
 	
 	//método que al entrar a la app nos carga un listado de ventas que se filtaran por precio/ubicacion lo q se defina	
 	@GetMapping("/ventasHome")
-	public List<Venta> getVentas(){
-		return this.ventaservice.findAll();
+	public List<Venta> ventasHome(){
+		return this.ventaservice.ventasHome();
 	}
 }

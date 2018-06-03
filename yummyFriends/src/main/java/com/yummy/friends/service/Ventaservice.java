@@ -14,8 +14,8 @@ public class Ventaservice {
 	@Autowired
 	public VentaRepository ventaRepository;
 	
-	public List<Venta> findAll() {
-		return this.ventaRepository.findAll();
+	public List<Venta> ventasHome() {
+		return this.ventaRepository.ventasHome();
 	}
 
 }
