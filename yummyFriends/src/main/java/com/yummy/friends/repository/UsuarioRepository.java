@@ -2,6 +2,7 @@ package com.yummy.friends.repository;
 
 import java.util.List;
 
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -36,8 +37,9 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Integer>{
 //	@Query("select idUsuario from Usuario where idUsuario = ?1")
 	public Float obtVal(Integer idUsuario);
 
-	
-//	public Boolean actualizarUsuario(Usuario u);
+	@Query("select c.comentarios from Compra c where c.idComprador = ?1 order by fechaHora desc")
+	public List<String> obtComentarios(Integer idUsuario, Pageable pageable);
 
+	public List<String> findTop10byidCompradorOrderByfechaHoraDesc(Integer idComprador);
 	
 }

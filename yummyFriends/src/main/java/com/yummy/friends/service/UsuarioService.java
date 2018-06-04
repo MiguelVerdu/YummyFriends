@@ -3,6 +3,7 @@ package com.yummy.friends.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import com.yummy.friends.domain.Usuario;
@@ -42,12 +43,15 @@ public class UsuarioService {
 	}
 
 	public Usuario actualizarUsuario(Usuario u) {
-//		return this.usuarioRepository.actualizarUsuario(u);
 		return this.usuarioRepository.save(u);
 	}
 	
 	public Boolean exists(Usuario u) {
 		return this.usuarioRepository.existsById(u.getIdUsuario());
 	}
-
+	
+	public List<String> obtComentarios(Integer idUsuario){
+//		return this.usuarioRepository.obtComentarios(idUsuario, new PageRequest(0,2));
+		return this.usuarioRepository.findTop10byidCompradorOrderByfechaHoraDesc(idUsuario);
+	}
 }
