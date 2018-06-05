@@ -1,9 +1,9 @@
 package com.yummy.friends.domain;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 import lombok.Getter;
@@ -14,23 +14,24 @@ import lombok.Setter;
 @Setter
 public class Usuario {
 	@Id
-	public Integer idUsuario;
+	private Integer idUsuario;
 	
-	public String nombre;
+	private String nombre;
 	
-	public String apellidos;
+	private String apellidos;
 	
-	public Date fechaNac;
+	private Date fechaNac;
 	
-	public Integer idCiudad;
-	public Integer idCodPostal;
+	private Integer idCiudad;
+	private Integer idCodPostal;
 	
-	public String password;
+	private String password;
 	
-	public String tipoPerfil;
+	private String tipoPerfil;
 	
-	public String fotoPerfil;
+	private String fotoPerfil;
 	
-	public String mail;
+	private String mail;
 	
+	private List<Compra> compras;
 }

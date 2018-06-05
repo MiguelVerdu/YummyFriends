@@ -1,9 +1,11 @@
 package com.yummy.friends.domain;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -14,23 +16,26 @@ import lombok.Setter;
 public class Venta {
 
 	@Id
-	public Integer idVenta;
+	private Integer idVenta;
 
-	public Integer idVendedor;
+	@OneToMany(mappedBy = "idCompra")
+	private List<Compra> compras;
+	
+	private Integer idVendedor;
 
-	public Date fechaCreacion;
+	private Date fechaCreacion;
 
-	public Date rangoHoraDisponibleMin;
+	private Date rangoHoraDisponibleMin;
 
-	public Date rangoHorarioDisponibleMax;
+	private Date rangoHorarioDisponibleMax;
 
-	public Integer idProducto;
+	private Integer idProducto;
 
-	public String descripcion;
+	private String descripcion;
 
-	public Float valoracion;
-	public Integer cantidad;
+	private Float valoracion;
+	private Integer cantidad;
 
-	public Float precio;
+	private Float precio;
 
 }

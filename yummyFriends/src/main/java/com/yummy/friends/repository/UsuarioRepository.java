@@ -31,12 +31,7 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Integer>{
 	public String validarUsuario(String email);
 
 	public Usuario findByidUsuario(Integer idUsuario);
-
-	@Query("select avg(valoracion) from Compra c where c.idComprador = ?1"
-			+ " group by c.idComprador")
-//	@Query("select idUsuario from Usuario where idUsuario = ?1")
-	public Float obtVal(Integer idUsuario);
-
+	
 	@Query("select c.comentarios from Compra c where c.idComprador = ?1 order by fechaHora desc")
 	public List<String> obtComentarios(Integer idUsuario, Pageable pageable);
 

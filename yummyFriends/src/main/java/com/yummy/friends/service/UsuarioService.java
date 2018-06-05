@@ -38,10 +38,6 @@ public class UsuarioService {
 		return this.usuarioRepository.findByidUsuario(idUsuario);
 	}
 
-	public Float obtVal(Integer idUsuario) {
-		return this.usuarioRepository.obtVal(idUsuario);
-	}
-
 	public Usuario actualizarUsuario(Usuario u) {
 		return this.usuarioRepository.save(u);
 	}

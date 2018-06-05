@@ -20,4 +20,9 @@ public class CompraController {
 	public List<String> obtComentarios(@PathVariable Integer idUsuario) {
 		return this.compraService.obtComentarios(idUsuario);
 	}
+	
+	@GetMapping("/obtenerValoracion/{idUsuario}")
+	public Float obtVal(@PathVariable Integer idUsuario) {
+		return this.compraService.obtVal(idUsuario);
+	}
 }

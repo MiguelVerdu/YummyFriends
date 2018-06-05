@@ -3,8 +3,9 @@ package com.yummy.friends.domain;
 import java.util.Date;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -15,18 +16,20 @@ import lombok.Setter;
 public class Compra {
 
 	@Id
-	public Integer idCompra;
+	private Integer idCompra;
 	
-	public Integer idVenta;
+	@ManyToOne
+	@JoinColumn(name = "idVenta")
+	private Venta venta;
 	
-	public Integer idComprador;
+	private Usuario idComprador;
 	
-	public Integer cantidadProducto;
+	private Integer cantidadProducto;
 	
-	public Date fechaHora;
+	private Date fechaHora;
 	
-	public Integer valoracion;
+	private Integer valoracion;
 	
-	public String comentarios;
+	private String comentarios;
 	
 }

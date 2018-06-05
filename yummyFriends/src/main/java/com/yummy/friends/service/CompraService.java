@@ -12,9 +12,12 @@ public class CompraService {
 
 	@Autowired
 	public CompraRepository compraRepository;
-	
-	public List<String> obtComentarios(Integer idUsuario){
-	
+
+	public List<String> obtComentarios(Integer idUsuario) {
 		return this.compraRepository.obtComentarios(idUsuario).subList(0, 2);
+	}
+
+	public Float obtVal(Integer idUsuario) {
+		return this.compraRepository.obtVal(idUsuario);
 	}
 }
