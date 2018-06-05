@@ -3,6 +3,7 @@ package com.yummy.friends.domain;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 import lombok.Getter;
@@ -12,13 +13,20 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Compra {
+
 	@Id
-	private Integer idCompra;
+	public Integer idCompra;
 	
-	private Venta idVenta;
-	private Usuario idComprador;
-	private Integer cantidadProducto;
-	private Date fechaHora;
-	private Integer valoracion;
-	private String comentarios;
+	public Integer idVenta;
+	
+	public Integer idComprador;
+	
+	public Integer cantidadProducto;
+	
+	public Date fechaHora;
+	
+	public Integer valoracion;
+	
+	public String comentarios;
+	
 }
