@@ -21,24 +21,24 @@ public class ProductoService {
 	@Autowired
 	public ProductoRepository productoRepository;
 
-	public void create(Producto producto, MultipartFile file) throws IOException {
-		
-				String token = UUID.randomUUID().toString();
-		
-			    File targetFile = new File("E:/" + token);
-			 
-			    java.nio.file.Files.copy(
-			      file.getInputStream(), 
-			      targetFile.toPath(), 
-			      StandardCopyOption.REPLACE_EXISTING);
-			 
-			    IOUtils.closeQuietly(file.getInputStream());
-			    
-			    producto.setFoto(token);
-		
-		 this.productoRepository.save(producto);
-		
-	}
+//	public void create(Producto producto, MultipartFile file) throws IOException {
+//		
+//				String token = UUID.randomUUID().toString();
+//		
+//			    File targetFile = new File("E:/" + token);
+//			 
+//			    java.nio.file.Files.copy(
+//			      file.getInputStream(), 
+//			      targetFile.toPath(), 
+//			      StandardCopyOption.REPLACE_EXISTING);
+//			 
+//			    IOUtils.closeQuietly(file.getInputStream());
+//			    
+//			    producto.setFoto(token);
+//		
+//		 this.productoRepository.save(producto);
+//		
+//	}
 	
 
 	

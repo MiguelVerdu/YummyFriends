@@ -34,9 +34,9 @@ public class Usuario {
 	
 	private String mail;
 	
-	@OneToMany(mappedBy="idComprador")
+	@OneToMany(mappedBy="comprador")
 	private List<Compra> compras;
 	
-	@OneToMany(mappedBy="idVendedor")
+	@OneToMany(mappedBy="vendedor")
 	private List<Venta> ventas;
 }

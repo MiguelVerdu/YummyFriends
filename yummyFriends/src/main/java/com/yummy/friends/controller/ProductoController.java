@@ -30,30 +30,30 @@ public class ProductoController {
 	@Autowired
 	public ProductoService productoService;
 
-	@PostMapping(value = "/createProducto")
-	public String create(@RequestPart("producto") String productoStr,
-			@RequestPart(name = "file", required = false) MultipartFile file) throws IOException {
-
-		Producto producto;
-		ObjectMapper om = new ObjectMapper();
-		om.setSerializationInclusion(Include.NON_NULL);
-		producto = om.readValue(productoStr, Producto.class);
-		this.productoService.create(producto, file);
-
-		return "OK";
-	}
-
-	@GetMapping(value = "/recogerProducto/{uuid}")
-	public ResponseEntity<InputStreamResource> getFile(@PathVariable("uuid") String uuid)
-			throws FileNotFoundException, IOException {
-
-		File file = new File("E:/" + uuid);
-
-		InputStream targetStream = new FileInputStream(file);
-
-		return ResponseEntity.ok().cacheControl(CacheControl.maxAge(30, TimeUnit.DAYS))
-				.contentType(MediaType.IMAGE_JPEG).body(new InputStreamResource(targetStream));
-
-	}
+//	@PostMapping(value = "/createProducto")
+//	public String create(@RequestPart("producto") String productoStr,
+//			@RequestPart(name = "file", required = false) MultipartFile file) throws IOException {
+//
+//		Producto producto;
+//		ObjectMapper om = new ObjectMapper();
+//		om.setSerializationInclusion(Include.NON_NULL);
+//		producto = om.readValue(productoStr, Producto.class);
+//		this.productoService.create(producto, file);
+//
+//		return "OK";
+//	}
+//
+//	@GetMapping(value = "/recogerProducto/{uuid}")
+//	public ResponseEntity<InputStreamResource> getFile(@PathVariable("uuid") String uuid)
+//			throws FileNotFoundException, IOException {
+//
+//		File file = new File("E:/" + uuid);
+//
+//		InputStream targetStream = new FileInputStream(file);
+//
+//		return ResponseEntity.ok().cacheControl(CacheControl.maxAge(30, TimeUnit.DAYS))
+//				.contentType(MediaType.IMAGE_JPEG).body(new InputStreamResource(targetStream));
+//
+//	}
 
 }
