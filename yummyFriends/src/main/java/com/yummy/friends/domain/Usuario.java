@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -33,5 +34,9 @@ public class Usuario {
 	
 	private String mail;
 	
+	@OneToMany(mappedBy="idComprador")
 	private List<Compra> compras;
+	
+	@OneToMany(mappedBy="idVendedor")
+	private List<Venta> ventas;
 }

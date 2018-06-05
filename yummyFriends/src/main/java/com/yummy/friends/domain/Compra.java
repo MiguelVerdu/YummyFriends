@@ -22,6 +22,8 @@ public class Compra {
 	@JoinColumn(name = "idVenta")
 	private Venta venta;
 	
+	@ManyToOne
+	@JoinColumn(name = "idUsuario")
 	private Usuario idComprador;
 	
 	private Integer cantidadProducto;
