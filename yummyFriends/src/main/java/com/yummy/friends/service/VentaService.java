@@ -9,13 +9,25 @@ import com.yummy.friends.domain.Venta;
 import com.yummy.friends.repository.VentaRepository;
 
 @Service
-public class Ventaservice {
+public class VentaService {
 
 	@Autowired
 	public VentaRepository ventaRepository;
 	
 	public List<Venta> ventasHome() {
 		return this.ventaRepository.ventasHome();
+	}
+
+	public List<Venta> findAll() {
+		return this.ventaRepository.findAll();
+	}
+
+	public void crearVenta(Venta v) {
+		this.ventaRepository.save(v);
+	}
+
+	public Venta detalleVenta(Integer id) {
+		return this.ventaRepository.findVentaById(id);
 	}
 
 }
