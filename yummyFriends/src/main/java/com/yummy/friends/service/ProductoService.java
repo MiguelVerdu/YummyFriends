@@ -33,9 +33,13 @@ public class ProductoService {
 			      StandardCopyOption.REPLACE_EXISTING);
 			 
 			    IOUtils.closeQuietly(file.getInputStream());
+			    
+			    producto.setFoto(token);
 		
 		 this.productoRepository.save(producto);
 		
 	}
+	
+
 	
 }

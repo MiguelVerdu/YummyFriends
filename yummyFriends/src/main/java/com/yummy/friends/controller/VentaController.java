@@ -10,11 +10,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.yummy.friends.domain.Venta;
-import com.yummy.friends.service.VentaService;
+//import com.yummy.friends.service.VentaService;
 
 @RestController
 public class VentaController {
-	
+	/*
 	@Autowired
 	public VentaService ventaService;
 	
@@ -23,8 +23,9 @@ public class VentaController {
 	public List<Venta> getVentas(){
 		return this.ventaService.findAll();
 	}
+	*/
 	
-	@PostMapping("/crearVenta")
+	/*@PostMapping("/crearVenta")
 	public void crearEncuentro(@RequestBody Venta v) {
 		this.ventaService.crearVenta(v);
 	}
@@ -33,4 +34,5 @@ public class VentaController {
 	public Venta detalleVenta(@PathVariable Integer id) {
 		return this.ventaService.detalleVenta(id);
 	}
+	*/
 }
