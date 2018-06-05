@@ -64,16 +64,6 @@ public class UsuarioController {
 		return this.usuarioService.getUsuario(idUsuario);
 	}
 	
-	@GetMapping("/obtenerValoracion/{idUsuario}")
-	public Float obtValo(@PathVariable Integer idUsuario) {
-		return this.usuarioService.obtVal(idUsuario);
-	}
-	
-	@GetMapping("/obtenerComentarios/{idUsuario}")
-	public List<String> obtComentarios(@PathVariable Integer idUsuario) {
-		return this.usuarioService.obtComentarios(idUsuario);
-	}
-	
 	@PutMapping("/actualizarUsuario/{idUsuario}")
 	public Usuario actualizarUsuario(@PathVariable Integer idUsuario, @RequestBody Usuario u) {
 		if (u != null && this.usuarioService.exists(u)) {

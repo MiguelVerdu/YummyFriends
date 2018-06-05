@@ -40,6 +40,4 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Integer>{
 	@Query("select c.comentarios from Compra c where c.idComprador = ?1 order by fechaHora desc")
 	public List<String> obtComentarios(Integer idUsuario, Pageable pageable);
 
-	public List<String> findTop10byidCompradorOrderByfechaHoraDesc(Integer idComprador);
-	
 }

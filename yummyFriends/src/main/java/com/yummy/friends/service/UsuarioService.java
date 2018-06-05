@@ -50,8 +50,4 @@ public class UsuarioService {
 		return this.usuarioRepository.existsById(u.getIdUsuario());
 	}
 	
-	public List<String> obtComentarios(Integer idUsuario){
-//		return this.usuarioRepository.obtComentarios(idUsuario, new PageRequest(0,2));
-		return this.usuarioRepository.findTop10byidCompradorOrderByfechaHoraDesc(idUsuario);
-	}
 }

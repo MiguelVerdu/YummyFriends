@@ -14,9 +14,10 @@ import lombok.Setter;
 public class Compra {
 	@Id
 	private Integer idCompra;
-	private Integer idVenta;
-	private Integer idComprador;
-	private String cantidadProducto;
+	
+	private Venta idVenta;
+	private Usuario idComprador;
+	private Integer cantidadProducto;
 	private Date fechaHora;
 	private Integer valoracion;
 	private String comentarios;
