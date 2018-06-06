@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.yummy.friends.domain.Usuario;
+import com.yummy.friends.domain.UsuarioClass;
 import com.yummy.friends.service.Email;
 import com.yummy.friends.service.UsuarioService;
 
@@ -30,8 +31,8 @@ public class UsuarioController {
 	private Email emailService;
 	
 	@GetMapping("/enviarEmail/{email}")
-	public void enviarEmail(@PathVariable String email) {
-		this.emailService.sendSimpleMessage(email);
+	public String enviarEmail(@PathVariable String email) {
+		return this.emailService.sendSimpleMessage(email);
 	}
 	
 	@PostMapping("/crearUsuario")
@@ -50,8 +51,8 @@ public class UsuarioController {
 	}
 	
 	@GetMapping("/getUsuarios")
-	@JsonIgnore
-	public List<Usuario> getUsuarios(){
+//	@JsonIgnore
+	public List<UsuarioClass> getUsuarios(){
 		return this.usuarioService.getUsuarios();
 	}
 	
@@ -61,8 +62,13 @@ public class UsuarioController {
 		return this.usuarioService.recuperPass(email);
 	}
 	
+	@PostMapping("/recuperarPass2")
+	public String recuperarPass2(@RequestBody Usuario u) {
+		return this.usuarioService.recuperPass(u.getMail());
+	}
+	
 	@GetMapping("/getUsuario/{idUsuario}")
-	public Usuario getUsuario(@PathVariable Integer idUsuario) {
+	public UsuarioClass getUsuario(@PathVariable Integer idUsuario) {
 		return this.usuarioService.getUsuario(idUsuario);
 	}
 	

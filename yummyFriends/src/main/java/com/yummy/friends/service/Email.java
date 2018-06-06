@@ -11,12 +11,19 @@ public class Email{
 	@Autowired
     public JavaMailSender emailSender;
  
-    public void sendSimpleMessage(String to) {
-        SimpleMailMessage message = new SimpleMailMessage(); 
+    public String sendSimpleMessage(String to) {
+        SimpleMailMessage message = new SimpleMailMessage();
+        
+        try {
         message.setTo(to); 
         message.setSubject("Nueva contraseña"); 
         message.setText("Esta es tu nueva contraseña " + generarPass(16));
         emailSender.send(message);
+        
+        return "{\"ok\":\"ok\"}";
+        } catch (Exception e) {
+        	return null;
+        }
     }
     
     private String generarPass(int tam) {

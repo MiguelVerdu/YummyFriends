@@ -3,9 +3,12 @@ package com.yummy.friends.domain;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -21,7 +24,8 @@ public class Compra {
 	@ManyToOne
 	@JoinColumn(name = "idVenta")
 	private Venta venta;
-	
+//	private Integer idVenta;
+//	@JsonBackReference
 	@ManyToOne
 	@JoinColumn(name = "idComprador")
 	private Usuario comprador;

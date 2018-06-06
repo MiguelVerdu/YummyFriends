@@ -2,12 +2,12 @@ package com.yummy.friends.repository;
 
 import java.util.List;
 
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import com.yummy.friends.domain.Ciudad;
 import com.yummy.friends.domain.Usuario;
+import com.yummy.friends.domain.UsuarioClass;
 
 public interface UsuarioRepository extends JpaRepository<Usuario, Integer>{
 
@@ -30,11 +30,14 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Integer>{
 			"where u.mail = ?1")
 	public String validarUsuario(String email);
 
-	public Usuario findByidUsuario(Integer idUsuario);
+	@Query("select new com.yummy.friends.domain.UsuarioClass(u.idUsuario, u.nombre, u.apellidos, u.fechaNac, u.idCiudad, u.idCodPostal, u.password, u.tipoPerfil, " +
+	"u.fotoPerfil, u.mail) from Usuario u where u.idUsuario = ?1")
+	public UsuarioClass findByidUsuario(Integer idUsuario);
 	
 //	@Override
-//	@Query("select u from Usuario u")
-//	public List<Usuario> findAll();
+	@Query("select new com.yummy.friends.domain.UsuarioClass(u.idUsuario, u.nombre, u.apellidos, u.fechaNac, u.idCiudad, u.idCodPostal, u.password, u.tipoPerfil, " +
+			"u.fotoPerfil, u.mail) from Usuario u")
+	public List<UsuarioClass> todos();
 //	@Query("select c.comentarios from Compra c where c.idComprador = ?1 order by fechaHora desc")
 //	public List<String> obtComentarios(Integer idUsuario, Pageable pageable);
 

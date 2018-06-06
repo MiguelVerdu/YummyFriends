@@ -3,10 +3,10 @@ package com.yummy.friends.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import com.yummy.friends.domain.Usuario;
+import com.yummy.friends.domain.UsuarioClass;
 import com.yummy.friends.repository.UsuarioRepository;
 
 @Service
@@ -22,8 +22,8 @@ public class UsuarioService {
 		return this.usuarioRepository.login(pass, email);
 	}
 
-	public List<Usuario> getUsuarios() {
-		return this.usuarioRepository.findAll();
+	public List<UsuarioClass> getUsuarios() {
+		return this.usuarioRepository.todos();
 	}
 
 	public String recuperPass(String email) {
@@ -34,7 +34,7 @@ public class UsuarioService {
 		return this.usuarioRepository.validarUsuario(email);
 	}
 
-	public Usuario getUsuario(Integer idUsuario) {
+	public UsuarioClass getUsuario(Integer idUsuario) {
 		return this.usuarioRepository.findByidUsuario(idUsuario);
 	}
 

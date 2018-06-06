@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -20,10 +21,12 @@ public class Venta {
 	@Id
 	private Integer idVenta;
 
-	@OneToMany(mappedBy = "idCompra")
+	@OneToMany(mappedBy = "idCompra", fetch = FetchType.EAGER)
 	private List<Compra> compras;
+//	private Integer idCompra;
 	
-	@ManyToOne
+//	@JsonBackReference
+	@ManyToOne//(fetch = FetchType.EAGER)
 	@JoinColumn(name="idVendedor")
 	private Usuario vendedor;
 //	private Integer idVendedor;
