@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.yummy.friends.domain.Usuario;
 import com.yummy.friends.service.Email;
 import com.yummy.friends.service.UsuarioService;
@@ -49,6 +50,7 @@ public class UsuarioController {
 	}
 	
 	@GetMapping("/getUsuarios")
+	@JsonIgnore
 	public List<Usuario> getUsuarios(){
 		return this.usuarioService.getUsuarios();
 	}

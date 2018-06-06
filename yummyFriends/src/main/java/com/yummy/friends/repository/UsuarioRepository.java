@@ -32,9 +32,9 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Integer>{
 
 	public Usuario findByidUsuario(Integer idUsuario);
 	
-	@Override
-	@Query("select u from Usuario u")
-	public List<Usuario> findAll();
+//	@Override
+//	@Query("select u from Usuario u")
+//	public List<Usuario> findAll();
 //	@Query("select c.comentarios from Compra c where c.idComprador = ?1 order by fechaHora desc")
 //	public List<String> obtComentarios(Integer idUsuario, Pageable pageable);
 
