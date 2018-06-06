@@ -1,9 +1,13 @@
 package com.yummy.friends.service;
 
+import java.security.MessageDigest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
+
+import com.yummy.friends.repository.UsuarioRepository;
 
 @Service
 public class Email{
@@ -11,18 +15,33 @@ public class Email{
 	@Autowired
     public JavaMailSender emailSender;
  
-    public String sendSimpleMessage(String to) {
+	@Autowired
+	public UsuarioService usuarioService;
+	
+	@Autowired
+	public UsuarioRepository usuarioRepository;
+	
+	public String sendSimpleMessage(String to) {
         SimpleMailMessage message = new SimpleMailMessage();
         
         try {
-        message.setTo(to); 
-        message.setSubject("Nueva contraseña"); 
-        message.setText("Esta es tu nueva contraseña " + generarPass(16));
-        emailSender.send(message);
+        	String pass = generarPass(16);
+        	
+        	MessageDigest m = MessageDigest.getInstance("MD5");
+        	m.reset();
+        	m.update(pass.getBytes());
+        	byte[] digest = m.digest();
+        	System.out.println("digest: " + digest + ", digestToString: " + digest.toString());
+        	this.usuarioRepository.actualizarPass(digest.toString(), to);
+        	
+	        message.setTo(to); 
+	        message.setSubject("Nueva contraseña"); 
+	        message.setText("Esta es tu nueva contraseña " + pass);
+	        emailSender.send(message);
         
-        return "{\"ok\":\"ok\"}";
+	        return "{\"ok\":\"ok\"}";
         } catch (Exception e) {
-        	return null;
+        	return e.getMessage();
         }
     }
     

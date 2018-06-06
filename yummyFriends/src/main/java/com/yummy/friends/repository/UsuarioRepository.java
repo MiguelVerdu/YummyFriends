@@ -3,7 +3,9 @@ package com.yummy.friends.repository;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.yummy.friends.domain.Ciudad;
 import com.yummy.friends.domain.Usuario;
@@ -38,7 +40,12 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Integer>{
 	@Query("select new com.yummy.friends.domain.UsuarioClass(u.idUsuario, u.nombre, u.apellidos, u.fechaNac, u.idCiudad, u.idCodPostal, u.password, u.tipoPerfil, " +
 			"u.fotoPerfil, u.mail) from Usuario u")
 	public List<UsuarioClass> todos();
-//	@Query("select c.comentarios from Compra c where c.idComprador = ?1 order by fechaHora desc")
+	
+	@Modifying
+	@Transactional
+	@Query("update Usuario set password = ?1 where mail = ?2")
+	public void actualizarPass(String pass, String email);
+	//	@Query("select c.comentarios from Compra c where c.idComprador = ?1 order by fechaHora desc")
 //	public List<String> obtComentarios(Integer idUsuario, Pageable pageable);
 
 }

@@ -32,6 +32,7 @@ public class UsuarioController {
 	
 	@GetMapping("/enviarEmail/{email}")
 	public String enviarEmail(@PathVariable String email) {
+		
 		return this.emailService.sendSimpleMessage(email);
 	}
 	
