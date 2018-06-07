@@ -1,21 +1,24 @@
 package com.yummy.friends.service;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.yummy.friends.domain.Venta;
 import com.yummy.friends.repository.VentaRepository;
 
 @Service
+
 public class VentaService {
 
 	@Autowired
 	public VentaRepository ventaRepository;
 
-	public List<Venta> findAll() {
+	public List<Venta> ventasHome() {
 		return this.ventaRepository.ventasHome();
+	}
+
+	public List<Venta> findAll() {
+		return this.ventaRepository.findAll();
 	}
 
 	public void crearVenta(Venta v) {
@@ -25,6 +28,5 @@ public class VentaService {
 	public Venta detalleVenta(Integer id) {
 		return this.ventaRepository.findVentaById(id);
 	}
-	
-	
+
 }
