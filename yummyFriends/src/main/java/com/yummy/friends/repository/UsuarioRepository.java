@@ -9,7 +9,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.yummy.friends.domain.Ciudad;
 import com.yummy.friends.domain.Usuario;
-import com.yummy.friends.domain.UsuarioClass;
 
 public interface UsuarioRepository extends JpaRepository<Usuario, Integer>{
 
@@ -32,20 +31,11 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Integer>{
 			"where u.mail = ?1")
 	public String validarUsuario(String email);
 
-	@Query("select new com.yummy.friends.domain.UsuarioClass(u.idUsuario, u.nombre, u.apellidos, u.fechaNac, u.idCiudad, u.idCodPostal, u.password, u.tipoPerfil, " +
-	"u.fotoPerfil, u.mail) from Usuario u where u.idUsuario = ?1")
-	public UsuarioClass findByidUsuario(Integer idUsuario);
-	
-//	@Override
-	@Query("select new com.yummy.friends.domain.UsuarioClass(u.idUsuario, u.nombre, u.apellidos, u.fechaNac, u.idCiudad, u.idCodPostal, u.password, u.tipoPerfil, " +
-			"u.fotoPerfil, u.mail) from Usuario u")
-	public List<UsuarioClass> todos();
+	public Usuario findByidUsuario(Integer idUsuario);	
 	
 	@Modifying
 	@Transactional
 	@Query("update Usuario set password = ?1 where mail = ?2")
 	public void actualizarPass(String pass, String email);
-	//	@Query("select c.comentarios from Compra c where c.idComprador = ?1 order by fechaHora desc")
-//	public List<String> obtComentarios(Integer idUsuario, Pageable pageable);
 
 }

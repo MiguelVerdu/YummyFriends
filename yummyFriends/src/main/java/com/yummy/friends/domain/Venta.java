@@ -10,6 +10,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -22,14 +24,13 @@ public class Venta {
 	private Integer idVenta;
 
 	@OneToMany(mappedBy = "idCompra", fetch = FetchType.EAGER)
+	@JsonIgnore
 	private List<Compra> compras;
-//	private Integer idCompra;
 	
-//	@JsonBackReference
-	@ManyToOne//(fetch = FetchType.EAGER)
+	@ManyToOne
 	@JoinColumn(name="idVendedor")
+	@JsonIgnore
 	private Usuario vendedor;
-//	private Integer idVendedor;
 
 	private Date fechaCreacion;
 

@@ -24,7 +24,6 @@ public class VentaController {
 		return this.ventaService.findAll();
 	}
 	
-	
 	@PostMapping("/crearVenta")
 	public void crearEncuentro(@RequestBody Venta v) {
 		this.ventaService.crearVenta(v);

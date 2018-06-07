@@ -8,10 +8,7 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -41,15 +38,17 @@ public class Usuario {
 	private String mail;
 
 	// @JsonManagedReference
-	@OneToMany(mappedBy = "comprador", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "comprador")
 	// @LazyCollection(LazyCollectionOption.FALSE)
-	@Fetch(value = FetchMode.SUBSELECT)
+//	@Fetch(value = FetchMode.SUBSELECT)
+	@JsonIgnore
 	private List<Compra> compras;
 
 	// @JsonManagedReference
-	@OneToMany(mappedBy = "vendedor", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "vendedor")
 	// @LazyCollection(LazyCollectionOption.FALSE)
-	 @Fetch(value = FetchMode.SUBSELECT)
+//	 @Fetch(value = FetchMode.SUBSELECT)
+	@JsonIgnore
 	private List<Venta> ventas;
 
 }
