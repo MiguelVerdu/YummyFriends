@@ -37,5 +37,8 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Integer>{
 	@Transactional
 	@Query("update Usuario set password = ?1 where mail = ?2")
 	public void actualizarPass(String pass, String email);
+	
+	@Query("select u.fotoPerfil from Usuario u where u.idUsuario =?1")
+	public String obtenerFoto(Integer id);
 
 }
