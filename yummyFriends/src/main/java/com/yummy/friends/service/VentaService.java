@@ -29,4 +29,8 @@ public class VentaService {
 		return this.ventaRepository.findVentaById(id);
 	}
 
+	public List<Venta> filtrarVentas(String busqueda) {
+		return this.ventaRepository.filtrarVentas(busqueda);
+	}
+
 }

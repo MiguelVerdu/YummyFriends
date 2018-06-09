@@ -36,4 +36,8 @@ public class VentaController {
 		return this.ventaService.detalleVenta(id);
 	}
 	
+	@GetMapping("/filtrarVentas/{busqueda}")
+	public List<Venta> filtrarVentas(@PathVariable String busqueda){
+		return this.ventaService.filtrarVentas(busqueda);
+	}
 }
