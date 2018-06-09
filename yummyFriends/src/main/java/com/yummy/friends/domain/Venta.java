@@ -46,5 +46,7 @@ public class Venta {
 	private Integer cantidad;
 
 	private Float precio;
+	
+	private String titulo;
 
 }
