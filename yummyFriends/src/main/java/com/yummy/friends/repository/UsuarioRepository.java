@@ -40,5 +40,8 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Integer>{
 	
 	@Query("select u.fotoPerfil from Usuario u where u.idUsuario =?1")
 	public String obtenerFoto(Integer id);
+	
+	@Query("select u.nombre from Usuario u inner join u.ventas v where  v.idVenta = ?1")
+	public String obtenerVendedor(Integer idVenta);
 
 }

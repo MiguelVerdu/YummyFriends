@@ -38,4 +38,6 @@ public class Compra {
 	
 	private String comentarios;
 	
+	private String estado;
+	
 }

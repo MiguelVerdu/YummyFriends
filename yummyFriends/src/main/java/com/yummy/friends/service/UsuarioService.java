@@ -71,5 +71,9 @@ public class UsuarioService {
 	public String obtenerFoto(Integer id) {
 		return this.usuarioRepository.obtenerFoto(id);
 	}
+	
+	public String obtenerVendedor(Integer idVenta) {
+		return this.usuarioRepository.obtenerVendedor(idVenta);
+	}
 
 }

@@ -40,4 +40,14 @@ public class VentaController {
 	public List<Venta> filtrarVentas(@PathVariable String busqueda){
 		return this.ventaService.filtrarVentas(busqueda);
 	}
+	
+	@GetMapping("/ventasRealizadas/{idUsuario}")
+	public List<Venta> ventasRealizadas(@PathVariable Integer idUsuario){
+		return this.ventaService.ventasRealizadas(idUsuario);
+	}
+	
+	@GetMapping("/ventasEnPublicacion/{idUsuario}")
+	public List<Venta> ventasEnPublicacion(@PathVariable Integer idUsuario){
+		return this.ventaService.ventasEnPublicacion(idUsuario);
+	}
 }

@@ -123,5 +123,10 @@ public class UsuarioController {
 		return foto;
 //		return this.productoService.obtenerFoto(id);
 	}
-
+	
+	@GetMapping("/obtenerVendedor/{idVenta}")
+	public String obtenerVendedor(@PathVariable Integer idVenta) {
+		String vendedor = "{\"vendedor\" : \""+this.usuarioService.obtenerVendedor(idVenta)+"\"}";
+		return vendedor;
+	}
 }

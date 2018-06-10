@@ -32,5 +32,12 @@ public class VentaService {
 	public List<Venta> filtrarVentas(String busqueda) {
 		return this.ventaRepository.filtrarVentas(busqueda);
 	}
-
+	
+	public List<Venta> ventasRealizadas(Integer idUsuario){
+		return this.ventaRepository.ventasRealizadas(idUsuario);
+	}
+	
+	public List<Venta> ventasEnPublicacion(Integer idUsuario){
+		return this.ventaRepository.ventasEnPublicacion(idUsuario);
+	}
 }
