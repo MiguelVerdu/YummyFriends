@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,11 @@ public class ProductoController {
 	@Autowired
 	public ProductoService productoService;
 
+	@GetMapping("/getProductos")
+	public List<Producto> getProductos() {
+		return this.productoService.findAll();
+	}
+
 	@PostMapping(value = "/createProducto")
 	public String create(@RequestPart("producto") String productoStr,
 			@RequestPart(name = "file", required = false) MultipartFile file) throws IOException {
@@ -40,6 +46,7 @@ public class ProductoController {
 		ObjectMapper om = new ObjectMapper();
 		om.setSerializationInclusion(Include.NON_NULL);
 		producto = om.readValue(productoStr, Producto.class);
+
 		this.productoService.create(producto, file);
 
 		return "OK";
@@ -50,7 +57,7 @@ public class ProductoController {
 			throws FileNotFoundException, IOException {
 
 		String uuid = this.productoService.obtenerFoto(idProducto);
-		
+
 		File file = new File("C:/Users/migue/Pictures/" + uuid);
 
 		InputStream targetStream = new FileInputStream(file);
@@ -59,17 +66,17 @@ public class ProductoController {
 				.contentType(MediaType.IMAGE_JPEG).body(new InputStreamResource(targetStream));
 
 	}
-	
-	@GetMapping(value="/fotoProducto/{id}")
+
+	@GetMapping(value = "/fotoProducto/{id}")
 	public String obtenerFoto(@PathVariable Integer id) {
-//		String foto = "{\"foto\" : \""+this.productoService.obtenerFoto(id)+"\"}";
-//		return foto;
+		// String foto = "{\"foto\" : \""+this.productoService.obtenerFoto(id)+"\"}";
+		// return foto;
 		return this.productoService.obtenerFoto(id);
 	}
 
-//	@GetMapping(value="/fotoVenta/{idVenta}")
-//	public String obtenerFotoVenta(@PathVariable Integer idVenta) {
-//		return this.productoService.obtenerFotoVenta(idVenta);
-//	}	
-	
+	// @GetMapping(value="/fotoVenta/{idVenta}")
+	// public String obtenerFotoVenta(@PathVariable Integer idVenta) {
+	// return this.productoService.obtenerFotoVenta(idVenta);
+	// }
+
 }

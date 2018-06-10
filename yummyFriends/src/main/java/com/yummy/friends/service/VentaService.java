@@ -21,8 +21,8 @@ public class VentaService {
 		return this.ventaRepository.findAll();
 	}
 
-	public void crearVenta(Venta v) {
-		this.ventaRepository.save(v);
+	public Venta crearVenta(Venta v) {
+		return this.ventaRepository.save(v);
 	}
 
 	public Venta detalleVenta(Integer id) {

@@ -27,8 +27,8 @@ public class VentaController {
 	}
 	
 	@PostMapping("/crearVenta")
-	public void crearEncuentro(@RequestBody Venta v) {
-		this.ventaService.crearVenta(v);
+	public Venta crearEncuentro(@RequestBody Venta v) {
+		return this.ventaService.crearVenta(v);
 	}
 	
 	@GetMapping("/detalleVenta/{id}")
