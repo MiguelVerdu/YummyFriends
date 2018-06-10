@@ -45,10 +45,12 @@ public class ProductoController {
 		return "OK";
 	}
 
-	@GetMapping(value = "/recogerProducto/{uuid}")
-	public ResponseEntity<InputStreamResource> getFile(@PathVariable("uuid") String uuid)
+	@GetMapping(value = "/recogerProducto/{idProducto}")
+	public ResponseEntity<InputStreamResource> getFile(@PathVariable("idProducto") Integer idProducto)
 			throws FileNotFoundException, IOException {
 
+		String uuid = this.productoService.obtenerFoto(idProducto);
+		
 		File file = new File("C:/Users/migue/Pictures/" + uuid);
 
 		InputStream targetStream = new FileInputStream(file);
@@ -60,9 +62,14 @@ public class ProductoController {
 	
 	@GetMapping(value="/fotoProducto/{id}")
 	public String obtenerFoto(@PathVariable Integer id) {
-		String foto = "{\"foto\" : \""+this.productoService.obtenerFoto(id)+"\"}";
-		return foto;
-//		return this.productoService.obtenerFoto(id);
+//		String foto = "{\"foto\" : \""+this.productoService.obtenerFoto(id)+"\"}";
+//		return foto;
+		return this.productoService.obtenerFoto(id);
 	}
 
+//	@GetMapping(value="/fotoVenta/{idVenta}")
+//	public String obtenerFotoVenta(@PathVariable Integer idVenta) {
+//		return this.productoService.obtenerFotoVenta(idVenta);
+//	}	
+	
 }

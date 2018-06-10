@@ -40,4 +40,5 @@ public class VentaService {
 	public List<Venta> ventasEnPublicacion(Integer idUsuario){
 		return this.ventaRepository.ventasEnPublicacion(idUsuario);
 	}
+
 }

@@ -38,6 +38,11 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Integer>{
 	@Query("update Usuario set password = ?1 where mail = ?2")
 	public void actualizarPass(String pass, String email);
 	
+	@Modifying
+	@Transactional
+	@Query("update Usuario set fotoPerfil = ?1 where idUsuario = ?2")
+	public void actualizarFoto(String token, Integer idUsuario);
+	
 	@Query("select u.fotoPerfil from Usuario u where u.idUsuario =?1")
 	public String obtenerFoto(Integer id);
 	

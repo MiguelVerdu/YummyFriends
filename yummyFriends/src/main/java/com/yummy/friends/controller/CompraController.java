@@ -25,4 +25,9 @@ public class CompraController {
 	public Float obtVal(@PathVariable Integer idUsuario) {
 		return this.compraService.obtVal(idUsuario);
 	}
+	
+	@GetMapping("/totalVentaCompra/{idVenta}")
+	public Float totalVenta(@PathVariable Integer idVenta) {
+		return this.compraService.totalVenta(idVenta);
+	}
 }

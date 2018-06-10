@@ -23,7 +23,7 @@ public class VentaController {
 	//método que al entrar a la app nos carga un listado de ventas que se filtaran por precio/ubicacion lo q se defina	
 	@GetMapping("/ventasHome")
 	public List<Venta> getVentas(){
-		return this.ventaService.findAll();
+		return this.ventaService.ventasHome();
 	}
 	
 	@PostMapping("/crearVenta")
@@ -50,4 +50,5 @@ public class VentaController {
 	public List<Venta> ventasEnPublicacion(@PathVariable Integer idUsuario){
 		return this.ventaService.ventasEnPublicacion(idUsuario);
 	}
+	
 }

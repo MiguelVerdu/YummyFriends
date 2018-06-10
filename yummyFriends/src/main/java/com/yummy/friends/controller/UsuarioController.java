@@ -94,7 +94,7 @@ public class UsuarioController {
 	@PostMapping(value = "/createUsuario")
 	public String create(@RequestPart("usuario") String usuarioStr,
 			@RequestPart(name = "file", required = false) MultipartFile file) throws IOException {
-
+		System.out.println(usuarioStr);
 		Usuario usuario;
 		ObjectMapper om = new ObjectMapper();
 		om.setSerializationInclusion(Include.NON_NULL);
@@ -104,10 +104,12 @@ public class UsuarioController {
 		return "OK";
 	}
 
-	@GetMapping(value = "/recogerUsuario/{uuid}")
-	public ResponseEntity<InputStreamResource> getFile(@PathVariable("uuid") String uuid)
+	@GetMapping(value = "/recogerUsuario/{idUsuario}")
+	public ResponseEntity<InputStreamResource> getFile(@PathVariable("idUsuario") Integer idUsuario)
 			throws FileNotFoundException, IOException {
 
+		String uuid = this.usuarioService.obtenerFoto(idUsuario);
+		
 		File file = new File("C:/Users/migue/Pictures/" + uuid);
 
 		InputStream targetStream = new FileInputStream(file);

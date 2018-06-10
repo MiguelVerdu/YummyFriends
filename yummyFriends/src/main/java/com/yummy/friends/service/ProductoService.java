@@ -44,4 +44,8 @@ public class ProductoService {
 		return this.productoRepository.obtenerFoto(id);
 	}
 	
+//	public String obtenerFotoVenta(Integer idVenta) {
+//		return this.productoRepository.obtenerFotoVenta(idVenta);
+//	}
+	
 }

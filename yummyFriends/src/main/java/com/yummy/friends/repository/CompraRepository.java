@@ -18,5 +18,8 @@ public interface CompraRepository extends JpaRepository<Compra, Integer> {
 	
 	@Query(value="select avg(valoracion) from Compra c where c.comprador.idUsuario = ?1 group by c.comprador.idUsuario")
 	public Float obtVal(Integer idUsuario);
+	
+	@Query("select sum(v.precio * c.cantidadProducto) as total from Compra c inner join c.venta v where v.idVenta = ?1")
+	public Float totalVenta(Integer idVenta);
 
 }

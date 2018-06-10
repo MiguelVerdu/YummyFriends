@@ -11,4 +11,6 @@ public interface ProductoRepository extends JpaRepository<Producto, Integer>{
 	@Query("select p.foto from Producto p where p.idProducto =?1")
 	public String obtenerFoto(Integer id);
 
+//	@Query("select p.foto from Venta v inner join Producto where v.idVenta = 1")
+//	public String obtenerFotoVenta(Integer idVenta);
 }

@@ -20,4 +20,8 @@ public class CompraService {
 	public Float obtVal(Integer idUsuario) {
 		return this.compraRepository.obtVal(idUsuario);
 	}
+	
+	public Float totalVenta(Integer idVenta) {
+		return this.compraRepository.totalVenta(idVenta);
+	}
 }

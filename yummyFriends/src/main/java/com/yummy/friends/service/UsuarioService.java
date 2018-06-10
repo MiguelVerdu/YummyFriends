@@ -64,7 +64,8 @@ public class UsuarioService {
 
 		u.setFotoPerfil(token);
 
-		this.usuarioRepository.save(u);
+//		this.usuarioRepository.save(u);
+		this.usuarioRepository.actualizarFoto(token, u.getIdUsuario());
 
 	}
 
