@@ -25,6 +25,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.yummy.friends.domain.Producto;
 import com.yummy.friends.service.ProductoService;
+import com.yummy.friends.service.VentaService;
 
 @RestController
 @CrossOrigin("*")
@@ -32,15 +33,23 @@ public class ProductoController {
 
 	@Autowired
 	public ProductoService productoService;
+	
+	@Autowired
+	public VentaService ventaService;
 
 	@GetMapping("/getProductos")
 	public List<Producto> getProductos() {
 		return this.productoService.findAll();
 	}
 
-	@PostMapping(value = "/createProducto")
+	@GetMapping("/getMaxId")
+	public Integer getMaxId() {
+		return this.productoService.getMaxId();
+	}
+	
+	@PostMapping(value = "/createProducto/{idVenta}")
 	public String create(@RequestPart("producto") String productoStr,
-			@RequestPart(name = "file", required = false) MultipartFile file) throws IOException {
+			@RequestPart(name = "file", required = false) MultipartFile file, @PathVariable Integer idVenta) throws IOException {
 
 		Producto producto;
 		ObjectMapper om = new ObjectMapper();
@@ -48,7 +57,8 @@ public class ProductoController {
 		producto = om.readValue(productoStr, Producto.class);
 
 		this.productoService.create(producto, file);
-
+			
+		this.ventaService.actualizarProducto(producto.getIdProducto(), idVenta);
 		return "OK";
 	}
 

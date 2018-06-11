@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.yummy.friends.domain.Usuario;
 import com.yummy.friends.domain.Venta;
+import com.yummy.friends.service.UsuarioService;
 import com.yummy.friends.service.VentaService;
 
 @RestController
@@ -20,14 +22,21 @@ public class VentaController {
 	@Autowired
 	public VentaService ventaService;
 	
+	@Autowired
+	public UsuarioService usuarioService;
+	
 	//método que al entrar a la app nos carga un listado de ventas que se filtaran por precio/ubicacion lo q se defina	
 	@GetMapping("/ventasHome")
 	public List<Venta> getVentas(){
 		return this.ventaService.ventasHome();
 	}
 	
-	@PostMapping("/crearVenta")
-	public Venta crearEncuentro(@RequestBody Venta v) {
+	@PostMapping("/crearVenta/{idUsuario}")
+	public Venta crearEncuentro(@RequestBody Venta v, @PathVariable Integer idUsuario) {
+		Usuario U = this.usuarioService.getUsuario(idUsuario);
+		if (v.getVendedor() == null) {
+			v.setVendedor(U);
+		} 
 		return this.ventaService.crearVenta(v);
 	}
 	
@@ -50,5 +59,6 @@ public class VentaController {
 	public List<Venta> ventasEnPublicacion(@PathVariable Integer idUsuario){
 		return this.ventaService.ventasEnPublicacion(idUsuario);
 	}
+	
 	
 }

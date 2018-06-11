@@ -7,6 +7,8 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
+import com.yummy.friends.domain.Venta;
+import com.yummy.friends.repository.CompraRepository;
 import com.yummy.friends.repository.UsuarioRepository;
 
 @Service
@@ -20,6 +22,9 @@ public class Email{
 	
 	@Autowired
 	public UsuarioRepository usuarioRepository;
+	
+	@Autowired
+	public CompraRepository compraRepository; 
 	
 	public String sendSimpleMessage(String to) {
         SimpleMailMessage message = new SimpleMailMessage();
@@ -42,6 +47,26 @@ public class Email{
 	        return "{\"ok\":\"ok\"}";
         } catch (Exception e) {
         	return e.getMessage();
+        }
+    }
+	
+	public void mensajeCompra(String to, Integer idCompra) {
+        SimpleMailMessage message = new SimpleMailMessage();
+        System.out.println("to:" + to + ", id: " + idCompra);
+        try {
+        	Venta v =  this.compraRepository.getInfoVenta(idCompra);
+        	System.out.println("venta: " + v.getIdVenta());
+	        message.setTo(to); 
+	        message.setSubject("Compra realizada!"); 
+	        message.setText("Le informamos que acaba de realizar una compra a través de la aplicación yummyFriends"+
+	        " con los siguientes datos: producto -> " +  v.getTitulo() + ", horario -> desde las " + 
+	        v.getRangoHoraDisponibleMin().getHours() + ":" + v.getRangoHoraDisponibleMin().getMinutes() + " hasta las " +
+	        v.getRangoHorarioDisponibleMax().getHours() + ":" + v.getRangoHorarioDisponibleMax().getMinutes() + ", por un importe "
+	        + "de " + this.compraRepository.totalVenta(v.getIdVenta()));
+	        emailSender.send(message);
+	        System.out.println(to);
+        } catch (Exception e) {
+        	System.err.println(e.getMessage());
         }
     }
     

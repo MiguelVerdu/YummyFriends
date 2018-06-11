@@ -45,6 +45,10 @@ public class ProductoService {
 		return this.productoRepository.findAll();
 	}
 
+	public Integer getMaxId() {
+		return this.productoRepository.getMaxId();
+	}
+
 	// public String obtenerFotoVenta(Integer idVenta) {
 	// return this.productoRepository.obtenerFotoVenta(idVenta);
 	// }

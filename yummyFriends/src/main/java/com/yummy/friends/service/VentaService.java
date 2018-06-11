@@ -22,6 +22,10 @@ public class VentaService {
 	}
 
 	public Venta crearVenta(Venta v) {
+		if (v.getIdVenta() == null) {
+			Integer id = this.ventaRepository.getMaxId();
+			v.setIdVenta(id);
+		}
 		return this.ventaRepository.save(v);
 	}
 
@@ -32,13 +36,21 @@ public class VentaService {
 	public List<Venta> filtrarVentas(String busqueda) {
 		return this.ventaRepository.filtrarVentas(busqueda);
 	}
-	
-	public List<Venta> ventasRealizadas(Integer idUsuario){
+
+	public List<Venta> ventasRealizadas(Integer idUsuario) {
 		return this.ventaRepository.ventasRealizadas(idUsuario);
 	}
-	
-	public List<Venta> ventasEnPublicacion(Integer idUsuario){
+
+	public List<Venta> ventasEnPublicacion(Integer idUsuario) {
 		return this.ventaRepository.ventasEnPublicacion(idUsuario);
+	}
+
+	public void actualizarProducto(Integer idProducto, Integer idVenta) {
+		this.ventaRepository.actualizarProducto(idProducto, idVenta);
+	}
+	
+	public Venta getInfoVentaCompra(Integer idCompra) {
+		return this.ventaRepository.getInfoVentaCompra(idCompra);
 	}
 
 }
